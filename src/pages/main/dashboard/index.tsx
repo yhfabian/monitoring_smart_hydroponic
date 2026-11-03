@@ -47,7 +47,7 @@ const metrics = [
   },
 ] as const;
 
-export default function EcommercePage() {
+export default function DashboardPage() {
   const t = useTranslations();
 
   return (

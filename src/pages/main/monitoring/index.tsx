@@ -1,5 +1,6 @@
 import { PageMeta } from "@/components/shared/page-meta";
 import { useTranslations } from "@/i18n";
+import PlantTable from "./plant-table";
 
 const readings = [
   {
@@ -119,6 +120,7 @@ export default function MonitoringPage() {
             {t("hydroponicMonitoring.sampleNotice")}
           </p>
         </section>
+        <PlantTable />
       </main>
     </>
   );

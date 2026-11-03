@@ -131,7 +131,9 @@
       "variants04": "Variantes 04",
       "variants05": "Variantes 05",
       "monitoring": "Monitorización hidropónica",
-      "classification": "Clasificación de lechugas"
+      "classification": "Clasificación de lechugas",
+      "assistant": "Asistente para agricultores",
+      "reports": "Informes y archivos"
     }
   },
   "header": {
@@ -1016,7 +1018,24 @@
     "subtitle": "Consulta las condiciones clave del cultivo de lechugas.",
     "demoData": "Datos de demostración",
     "description": "Lecturas de ejemplo del entorno hidropónico y del estado del sistema.",
-    "systemStatusDescription": "Estado de ejemplo del sistema HydroSmart."
+    "systemStatusDescription": "Estado de ejemplo del sistema HydroSmart.",
+    "plantTableTitle": "Estado de siembra y crecimiento",
+    "plantTableSubtitle": "Seis plantas de lechuga rizada en una sola zona hidropónica. Las fechas, etapas de crecimiento y estados son datos de demostración.",
+    "plantColumns": {
+      "plantNumber": "Número de planta",
+      "plantedAt": "Fecha de siembra",
+      "growthStage": "Etapa de crecimiento",
+      "status": "Estado"
+    },
+    "growthStages": {
+      "seedling": "Plántula",
+      "vegetative": "Vegetativa",
+      "headFormation": "Formación de cogollo"
+    },
+    "plantStatuses": {
+      "growing": "En crecimiento",
+      "ready": "Lista para cosechar"
+    }
   },
   "lettuceClassification": {
     "plantNumber": "Número de planta",
@@ -1035,5 +1054,79 @@
     "subtitle": "Consulta los resultados de clasificación de ejemplo de cada planta.",
     "plantImage": "Imagen de la planta",
     "capturedAt": "Fecha de captura"
+  },
+  "plantData": {
+    "columns": {
+      "plantNumber": "Número de planta",
+      "growthStage": "Etapa de crecimiento",
+      "plantImage": "Imagen de la planta",
+      "variety": "Variedad",
+      "plantedAt": "Fecha de siembra",
+      "status": "Estado",
+      "location": "Zona de cultivo"
+    },
+    "statuses": {
+      "growing": "En crecimiento",
+      "ready": "Lista para cosechar"
+    },
+    "totalPlants": "Total de plantas",
+    "summary": "Resumen de plantas",
+    "tableTitle": "Inventario de plantas",
+    "title": "Datos de plantas",
+    "readyPlants": "Listas para cosechar",
+    "growingPlants": "En crecimiento",
+    "description": "Inventario de ejemplo de lechugas y sus etapas de crecimiento.",
+    "lettuceIllustration": "Ilustración de una planta de lechuga",
+    "subtitle": "Consulta las variedades, fechas de siembra, etapas de crecimiento y zonas.",
+    "tableDescription": "Registros de ejemplo de plantas para el sistema HydroSmart.",
+    "demoData": "Datos de demostración",
+    "stages": {
+      "seedling": "Plántula",
+      "vegetative": "Crecimiento vegetativo",
+      "headFormation": "Formación de cogollo"
+    },
+    "zone": "Zona {zone}"
+  },
+  "farmerAssistant": {
+    "title": "Asistente para agricultores",
+    "description": "Haz preguntas prácticas sobre el cuidado de la lechuga hidropónica.",
+    "chatTitle": "Pregunta al asistente",
+    "demoNotice": "Esta es una demostración de la interfaz. Las respuestas son de ejemplo y no las genera una IA.",
+    "demoBadge": "Solo demostración",
+    "welcome": "¡Hola! Puedo ayudarte a explorar temas comunes sobre el cuidado de la lechuga hidropónica. Este chat es una demostración y no está conectado a un servicio de IA.",
+    "demoReply": "Gracias por tu pregunta. Esta demostración aún no está conectada a un servicio de IA. Tu equipo podrá conectarla a la API de Flask más adelante.",
+    "suggestions": "Prueba a preguntar sobre",
+    "prompts": {
+      "ph": "¿Qué rango de pH es adecuado para la lechuga?",
+      "nutrients": "¿Cómo se controla la concentración de nutrientes?",
+      "leaves": "¿Por qué amarillean las hojas?"
+    },
+    "inputLabel": "Tu pregunta",
+    "inputPlaceholder": "Escribe una pregunta sobre hidroponía…",
+    "send": "Enviar"
+  },
+  "reports": {
+    "title": "Informes y archivos",
+    "description": "Consulta resultados de clasificación y registros diarios de sensores, incluidos los días de crecimiento.",
+    "demoNotice": "Todos los registros son datos de ejemplo. Los archivos se exportan en formato CSV, compatible con Excel.",
+    "gradeTitle": "Archivo de grados",
+    "gradeDescription": "Resultados de ejemplo y fechas de captura de imágenes.",
+    "exportGrades": "Exportar archivo de grados",
+    "sensorTitle": "Archivo diario de sensores",
+    "sensorDescription": "Lecturas hidropónicas diarias y edad de las plantas en días de crecimiento.",
+    "exportSensors": "Exportar archivo de sensores",
+    "gradeColumns": {
+      "plant": "Número de planta",
+      "capturedAt": "Fecha de captura",
+      "grade": "Grado"
+    },
+    "sensorColumns": {
+      "date": "Fecha",
+      "ph": "pH",
+      "tds": "TDS (PPM)",
+      "temperature": "Temperatura del agua",
+      "humidity": "Humedad",
+      "growthDays": "Días de crecimiento"
+    }
   }
 }

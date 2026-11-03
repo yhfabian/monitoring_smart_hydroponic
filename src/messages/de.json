@@ -131,7 +131,9 @@
       "variants04": "Varianten 04",
       "variants05": "Varianten 05",
       "monitoring": "Hydroponiküberwachung",
-      "classification": "Salatklassifizierung"
+      "classification": "Salatklassifizierung",
+      "assistant": "Beratungsassistent für Landwirte",
+      "reports": "Berichte und Archiv"
     }
   },
   "header": {
@@ -1016,7 +1018,24 @@
     "subtitle": "Überblick über wichtige Bedingungen für den Salatanbau.",
     "demoData": "Demodaten",
     "description": "Beispielwerte zur Hydroponikumgebung und zum Systemstatus.",
-    "systemStatusDescription": "Beispielstatus für das HydroSmart-Anbausystem."
+    "systemStatusDescription": "Beispielstatus für das HydroSmart-Anbausystem.",
+    "plantTableTitle": "Pflanz- und Wachstumsstatus",
+    "plantTableSubtitle": "Sechs Pflanzen mit krausem Salat in einer Hydroponikzone. Die angezeigten Pflanzdaten, Wachstumsphasen und Status sind Demodaten.",
+    "plantColumns": {
+      "plantNumber": "Pflanzennummer",
+      "plantedAt": "Pflanzdatum",
+      "growthStage": "Wachstumsphase",
+      "status": "Status"
+    },
+    "growthStages": {
+      "seedling": "Keimling",
+      "vegetative": "Vegetativ",
+      "headFormation": "Kopfbildung"
+    },
+    "plantStatuses": {
+      "growing": "Wachsend",
+      "ready": "Erntereif"
+    }
   },
   "lettuceClassification": {
     "plantNumber": "Pflanzennummer",
@@ -1035,5 +1054,79 @@
     "subtitle": "Sieh dir die Beispielklassifizierung jeder Pflanze an.",
     "plantImage": "Pflanzenbild",
     "capturedAt": "Aufnahmedatum"
+  },
+  "plantData": {
+    "columns": {
+      "plantNumber": "Pflanzennummer",
+      "growthStage": "Wachstumsphase",
+      "plantImage": "Pflanzenbild",
+      "variety": "Sorte",
+      "plantedAt": "Pflanzdatum",
+      "status": "Status",
+      "location": "Anbauzone"
+    },
+    "statuses": {
+      "growing": "Im Wachstum",
+      "ready": "Erntebereit"
+    },
+    "totalPlants": "Pflanzen gesamt",
+    "summary": "Pflanzenübersicht",
+    "tableTitle": "Pflanzenbestand",
+    "title": "Pflanzendaten",
+    "readyPlants": "Erntebereit",
+    "growingPlants": "Im Wachstum",
+    "description": "Beispielinventar der Salatpflanzen und ihrer Wachstumsphasen.",
+    "lettuceIllustration": "Illustration einer Salatpflanze",
+    "subtitle": "Verfolge Sorten, Pflanzdaten, Wachstumsphasen und Anbauzonen.",
+    "tableDescription": "Beispieldatensätze für das HydroSmart-Anbausystem.",
+    "demoData": "Demodaten",
+    "stages": {
+      "seedling": "Keimling",
+      "vegetative": "Vegetatives Wachstum",
+      "headFormation": "Kopfbildung"
+    },
+    "zone": "Zone {zone}"
+  },
+  "farmerAssistant": {
+    "title": "Beratungsassistent für Landwirte",
+    "description": "Stellen Sie praktische Fragen zur Pflege von hydroponischem Salat.",
+    "chatTitle": "Fragen Sie den Assistenten",
+    "demoNotice": "Dies ist eine Frontend-Demo. Die Antworten sind Beispieltexte und werden nicht von einer KI erzeugt.",
+    "demoBadge": "Nur Demo",
+    "welcome": "Hallo! Ich kann Ihnen helfen, allgemeine Themen zur Pflege von hydroponischem Salat zu erkunden. Dieser Chat ist eine Demo und nicht mit einem KI-Dienst verbunden.",
+    "demoReply": "Danke für Ihre Frage. Diese Demo ist noch nicht mit einem KI-Dienst verbunden. Ihr Team kann sie später mit der Flask-API verbinden.",
+    "suggestions": "Fragen Sie zum Beispiel nach",
+    "prompts": {
+      "ph": "Welcher pH-Bereich ist für Salat geeignet?",
+      "nutrients": "Wie wird die Nährstoffkonzentration geregelt?",
+      "leaves": "Warum werden Salatblätter gelb?"
+    },
+    "inputLabel": "Ihre Frage",
+    "inputPlaceholder": "Frage zum hydroponischen Anbau eingeben…",
+    "send": "Senden"
+  },
+  "reports": {
+    "title": "Berichte und Archiv",
+    "description": "Prüfen Sie Klassifizierungsergebnisse und tägliche Sensordaten einschließlich der Wachstumstage.",
+    "demoNotice": "Alle angezeigten Datensätze sind Beispieldaten. Die Exportdateien haben das CSV-Format und lassen sich in Excel öffnen.",
+    "gradeTitle": "Klassifizierungsarchiv",
+    "gradeDescription": "Beispielhafte Salatklassifizierungen und Aufnahmezeiten.",
+    "exportGrades": "Klassifizierungsarchiv exportieren",
+    "sensorTitle": "Tägliches Sensorarchiv",
+    "sensorDescription": "Tägliche Hydroponikmesswerte und Pflanzenalter in Wachstumstagen.",
+    "exportSensors": "Sensorarchiv exportieren",
+    "gradeColumns": {
+      "plant": "Pflanzennummer",
+      "capturedAt": "Aufnahmezeit",
+      "grade": "Qualitätsstufe"
+    },
+    "sensorColumns": {
+      "date": "Datum",
+      "ph": "pH-Wert",
+      "tds": "TDS (PPM)",
+      "temperature": "Wassertemperatur",
+      "humidity": "Luftfeuchtigkeit",
+      "growthDays": "Wachstumstage"
+    }
   }
 }

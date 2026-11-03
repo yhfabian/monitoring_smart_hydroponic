@@ -1,12 +1,11 @@
 import AppLayout from "@/components/layout/app-layout";
-import CalendarPage from "@/pages/main/calendar";
-import EcommercePage from "@/pages/main/dashboard/ecommerce";
+import DashboardPage from "@/pages/main/dashboard";
 import MonitoringPage from "@/pages/main/monitoring";
 import ClassificationPage from "@/pages/main/classification";
-import FormElementsPage from "@/pages/main/forms/form-elements";
+import FarmerAssistantPage from "@/pages/main/assistant";
+import ReportsPage from "@/pages/main/reports";
 import { BlankPage, Error404Page } from "@/pages/main/pages";
 import ProfilePage from "@/pages/main/profile";
-import BasicTablesPage from "@/pages/main/tables/basic-tables";
 import { AuthLayout, SignInPage, SignUpPage } from "@/pages/others/auth";
 import BarChartPage from "@/pages/others/charts/bar-chart";
 import LineChartPage from "@/pages/others/charts/line-chart";
@@ -24,20 +23,19 @@ export default function App() {
     <Routes>
       {/* Dashboard Layout */}
       <Route element={<AppLayout />}>
-        <Route index element={<EcommercePage />} />
+        <Route index element={<DashboardPage />} />
         <Route path="/monitoring" element={<MonitoringPage />} />
         <Route path="/classification" element={<ClassificationPage />} />
+        <Route path="/assistant" element={<FarmerAssistantPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
 
         {/* Others Page */}
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/calendar" element={<CalendarPage />} />
         <Route path="/blank" element={<BlankPage />} />
 
         {/* Forms */}
-        <Route path="/form-elements" element={<FormElementsPage />} />
 
         {/* Tables */}
-        <Route path="/basic-tables" element={<BasicTablesPage />} />
 
         {/* Ui Elements */}
         <Route path="/alerts" element={<Alerts />} />

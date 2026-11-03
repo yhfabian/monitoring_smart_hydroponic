@@ -1,9 +1,7 @@
-
 import {
   LayoutGridIcon,
   PieChartIcon,
-  BoxIcon,
-  ListIcon,
+  ChatIcon,
   TableIcon,
   CalendarIcon,
   PageIcon,
@@ -27,14 +25,9 @@ export const navItems: NavItem[] = [
     path: "/classification",
   },
   {
-    icon: <BoxIcon className="size-6" />,
-    key: "plants",
-    path: "/plants",
-  },
-  {
-    icon: <ListIcon className="size-6" />,
-    key: "history",
-    path: "/history",
+    icon: <ChatIcon className="size-6" />,
+    key: "assistant",
+    path: "/assistant",
   },
   {
     icon: <TableIcon className="size-6" />,
