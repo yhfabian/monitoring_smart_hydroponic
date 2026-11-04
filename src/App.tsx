@@ -5,8 +5,6 @@ import ClassificationPage from "@/pages/main/classification";
 import FarmerAssistantPage from "@/pages/main/assistant";
 import ReportsPage from "@/pages/main/reports";
 import { BlankPage, Error404Page } from "@/pages/main/pages";
-import ProfilePage from "@/pages/main/profile";
-import { AuthLayout, SignInPage, SignUpPage } from "@/pages/others/auth";
 import BarChartPage from "@/pages/others/charts/bar-chart";
 import LineChartPage from "@/pages/others/charts/line-chart";
 import Alerts from "@/pages/others/ui-elements/alerts";
@@ -30,7 +28,6 @@ export default function App() {
         <Route path="/reports" element={<ReportsPage />} />
 
         {/* Others Page */}
-        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/blank" element={<BlankPage />} />
 
         {/* Forms */}
@@ -48,12 +45,6 @@ export default function App() {
         {/* Charts */}
         <Route path="/line-chart" element={<LineChartPage />} />
         <Route path="/bar-chart" element={<BarChartPage />} />
-      </Route>
-
-      {/* Auth Layout */}
-      <Route element={<AuthLayout />}>
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
       </Route>
 
       {/* Full-width / Error / Status Pages */}

@@ -2,6 +2,7 @@ import type { ComponentType, SVGProps } from "react";
 
 // Direct imports (not the `@/icons` barrel) keep this module's graph small.
 import UsFlagIcon from "@/icons/flag-us.svg?react";
+import IndonesiaFlagIcon from "@/icons/flag-id.svg?react";
 
 import { type Locale, isRtl, routing } from "./routing";
 
@@ -16,6 +17,12 @@ export interface Language {
 }
 
 export const languages: readonly Language[] = [
+  {
+    id: "id",
+    name: "Bahasa Indonesia",
+    shortName: "ID",
+    FlagIcon: IndonesiaFlagIcon,
+  },
   { id: "en", name: "English", shortName: "EN", FlagIcon: UsFlagIcon },
 ];
 
