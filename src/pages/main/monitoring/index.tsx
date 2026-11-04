@@ -1,44 +1,115 @@
+import { useEffect, useState } from "react";
 import { PageMeta } from "@/components/shared/page-meta";
 import { useTranslations } from "@/i18n";
 import PlantTable from "./plant-table";
 
-const readings = [
-  {
-    key: "ph",
-    value: "6.2",
-    unit: "pH",
-    range: "5.5–6.5",
-    fill: "w-3/4",
-    color: "bg-emerald-500",
-  },
-  {
-    key: "tds",
-    value: "840",
-    unit: "PPM",
-    range: "700–900 PPM",
-    fill: "w-2/3",
-    color: "bg-teal-500",
-  },
-  {
-    key: "waterTemperature",
-    value: "22.4",
-    unit: "°C",
-    range: "18–24 °C",
-    fill: "w-3/4",
-    color: "bg-sky-500",
-  },
-  {
-    key: "humidity",
-    value: "68",
-    unit: "%",
-    range: "60–75%",
-    fill: "w-2/3",
-    color: "bg-cyan-500",
-  },
-] as const;
+interface SensorData {
+  success: boolean;
+  timestamp: string;
+  sensors: {
+    temperature: number;
+    humidity: number;
+    tds: number;
+    ph: number;
+  };
+  predicted_growth_days: number;
+  predicted_growth_days_raw: number;
+}
+
+interface ReadingsState {
+  key: string;
+  labelKey: string;
+  value: string;
+  unit: string;
+  range: string;
+  fill: string;
+  color: string;
+}
+
+const TARGET_RANGES: Record<string, string> = {
+  ph: "5.5–6.5",
+  tds: "700–900 PPM",
+  waterTemperature: "18–24 °C",
+  humidity: "60–75%",
+};
 
 export default function MonitoringPage() {
   const t = useTranslations();
+  const [data, setData] = useState<SensorData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+const fetchLatest = async () => {
+    try {
+      const res = await fetch("/api/sensors/latest");
+      const json = await res.json();
+
+      if (!res.ok || !json.success) {
+        throw new Error(json.error || `HTTP ${res.status}`);
+      }
+
+      setData(json);
+      setError(null);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLatest();
+    const interval = setInterval(fetchLatest, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const readings: ReadingsState[] = [
+    {
+      key: "ph",
+      labelKey: "hydroSmartDashboard.metrics.ph",
+      value: data?.sensors.ph?.toFixed(2) ?? "—",
+      unit: "pH",
+      range: TARGET_RANGES.ph,
+      fill: "w-3/4",
+      color: "bg-emerald-500",
+    },
+    {
+      key: "tds",
+      labelKey: "hydroSmartDashboard.metrics.tds",
+      value: data?.sensors.tds?.toFixed(0) ?? "—",
+      unit: "PPM",
+      range: TARGET_RANGES.tds,
+      fill: "w-2/3",
+      color: "bg-teal-500",
+    },
+    {
+      key: "waterTemperature",
+      labelKey: "hydroSmartDashboard.metrics.waterTemperature",
+      value: data?.sensors.temperature?.toFixed(1) ?? "—",
+      unit: "°C",
+      range: TARGET_RANGES.waterTemperature,
+      fill: "w-3/4",
+      color: "bg-sky-500",
+    },
+    {
+      key: "humidity",
+      labelKey: "hydroSmartDashboard.metrics.humidity",
+      value: data?.sensors.humidity?.toFixed(0) ?? "—",
+      unit: "%",
+      range: TARGET_RANGES.humidity,
+      fill: "w-2/3",
+      color: "bg-cyan-500",
+    },
+    {
+      key: "growthDays",
+      labelKey: "hydroSmartDashboard.metrics.growthDays",
+      value: data?.predicted_growth_days?.toFixed(0) ?? "—",
+      unit: "hari",
+      range: "estimasi umur tanaman",
+      fill: "w-1/2",
+      color: "bg-amber-500",
+    },
+  ];
 
   return (
     <>
@@ -56,9 +127,6 @@ export default function MonitoringPage() {
               {t("hydroponicMonitoring.subtitle")}
             </p>
           </div>
-          <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
-            {t("hydroponicMonitoring.demoData")}
-          </span>
         </header>
 
         <section aria-labelledby="readings-heading" className="space-y-3">
@@ -76,14 +144,20 @@ export default function MonitoringPage() {
               >
                 <div className="flex items-start justify-between gap-2">
                   <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                    {t(`hydroSmartDashboard.metrics.${reading.key}`)}
+                    {t(reading.labelKey)}
                   </p>
                   <span className="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
                     {t("hydroponicMonitoring.optimal")}
                   </span>
                 </div>
                 <p className="mt-4 text-3xl font-semibold text-gray-900 dark:text-white">
-                  {reading.value}
+                  {loading ? (
+                    <span className="inline-block h-5 w-12 animate-spin rounded-full border-2 border-gray-300 border-t-transparent" />
+                  ) : error ? (
+                    <span className="text-red-500 text-sm">{error}</span>
+                  ) : (
+                    reading.value
+                  )}
                   <span className="ms-2 text-sm font-medium text-gray-500 dark:text-gray-400">
                     {reading.unit}
                   </span>
@@ -117,9 +191,48 @@ export default function MonitoringPage() {
             </span>
           </div>
           <p className="mt-4 border-t border-gray-100 pt-4 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
-            {t("hydroponicMonitoring.sampleNotice")}
+            {data ? (
+              <>
+                Data terakhir:{" "}
+                {new Date(data.timestamp).toLocaleString()}
+              </>
+            ) : (
+              t("hydroponicMonitoring.systemStatusDescription")
+            )}
           </p>
         </section>
+
+        <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-gray-900">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+                {t("hydroponicMonitoring.predictionTitle")}
+              </h2>
+              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {t("hydroponicMonitoring.predictionSubtitle")}
+              </p>
+            </div>
+            {data && (
+              <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-sm font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">
+                <span className="size-2 rounded-full bg-amber-500" />
+                {t("hydroponicMonitoring.growthDays")}
+              </span>
+            )}
+          </div>
+          <p className="mt-4 border-t border-gray-100 pt-4 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
+            {data ? (
+              <>
+                Estimasi umur tanaman (growth days):{" "}
+                <span className="font-semibold text-gray-800 dark:text-white text-lg">
+                  {data.predicted_growth_days} hari
+                </span>
+              </>
+            ) : (
+              t("hydroponicMonitoring.sampleNotice")
+            )}
+          </p>
+        </section>
+
         <PlantTable />
       </main>
     </>

@@ -1001,6 +1001,10 @@
     "systemStatusDescription": "Sample status for the HydroSmart growing setup.",
     "plantTableTitle": "Planting and growth status",
     "plantTableSubtitle": "Six curly lettuce plants in one hydroponic zone. Dates, growth stages, and status shown are demo data.",
+    "liveData": "Live Data",
+    "predictionTitle": "Prediction",
+    "predictionSubtitle": "Estimated plant age based on current sensor readings.",
+    "growthDays": "Growth days",
     "plantColumns": {
       "plantNumber": "Plant number",
       "plantedAt": "Date planted",
@@ -1035,6 +1039,7 @@
       "tds": "TDS / Nutrient Level",
       "gradeC": "Grade C",
       "humidity": "Humidity",
+       "growthDays": "Estimated Growth Days",
       "waterTemperature": "Water Temperature"
     }
   },

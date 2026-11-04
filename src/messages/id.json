@@ -997,6 +997,10 @@
     "systemStatusDescription": "Contoh status sistem tanam HydroSmart.",
     "plantTableTitle": "Status Tanam dan Pertumbuhan",
     "plantTableSubtitle": "Enam tanaman selada keriting dalam satu zona hidroponik. Tanggal, tahap pertumbuhan, dan status merupakan data contoh.",
+    "liveData": "Data Langsung",
+    "predictionTitle": "Prediksi",
+    "predictionSubtitle": "Estimasi umur tanaman berdasarkan pembacaan sensor terkini.",
+    "growthDays": "Growth days",
     "plantColumns": {
       "plantNumber": "Nomor tanaman",
       "plantedAt": "Tanggal tanam",
@@ -1031,6 +1035,7 @@
       "tds": "TDS / Nutrisi",
       "gradeC": "Grade C",
       "humidity": "Kelembapan",
+      "growthDays": "Estimasi Umur",
       "waterTemperature": "Suhu Air"
     }
   },
